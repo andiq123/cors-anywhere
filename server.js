@@ -3,15 +3,15 @@ const CronJob = require('cron').CronJob;
 const host = process.env.HOST || '0.0.0.0';
 
 var port = process.env.PORT || 8080;
-
-const originBlacklist = parseEnvList(process.env.CORSANYWHERE_BLACKLIST);
-const originWhitelist = parseEnvList(process.env.CORSANYWHERE_WHITELIST);
 const parseEnvList = (env) => {
   if (!env) {
     return [];
   }
   return env.split(',');
 };
+
+const originBlacklist = parseEnvList(process.env.CORSANYWHERE_BLACKLIST);
+const originWhitelist = parseEnvList(process.env.CORSANYWHERE_WHITELIST);
 
 const checkRateLimit = require('./lib/rate-limit')(
   process.env.CORSANYWHERE_RATELIMIT
@@ -48,7 +48,7 @@ cors_proxy
       xfwd: false,
     },
   })
-  .listen(port, host, function () {
-    process.env.CORSANYWHERE_WHITELIST;
+  .listen(port, host, () => {
+    console.log(process.env);
     console.log('Running CORS Anywhere on ' + host + ':' + port);
   });
