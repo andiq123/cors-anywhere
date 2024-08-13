@@ -49,6 +49,5 @@ cors_proxy
     },
   })
   .listen(port, host, () => {
-    console.log(process.env);
     console.log('Running CORS Anywhere on ' + host + ':' + port);
   });
