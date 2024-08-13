@@ -23,7 +23,7 @@ var checkRateLimit = require('./lib/rate-limit')(
 );
 
 const job = CronJob.from({
-  cronTime: '0,20,40 * * * *',
+  cronTime: '*/10 * * * *',
   onTick: async () => {
     await fetch(process.env.BACK_API + '/api/wake');
   },
