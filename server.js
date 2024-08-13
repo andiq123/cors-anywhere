@@ -32,8 +32,6 @@ job.start();
 const cors_proxy = require('./lib/cors-anywhere');
 cors_proxy
   .createServer({
-    originBlacklist: originBlacklist,
-    originWhitelist: originWhitelist,
     checkRateLimit: checkRateLimit,
     removeHeaders: [
       'cookie',
@@ -52,5 +50,6 @@ cors_proxy
   .listen(port, host, () => {
     console.log('backapi', process.env.BACK_API);
     console.log('whitelist', process.env.CORSANYWHERE_WHITELIST);
+    console.log(originWhitelist);
     console.log('Running CORS Anywhere on ' + host + ':' + port);
   });
