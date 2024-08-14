@@ -18,7 +18,7 @@ const checkRateLimit = require('./lib/rate-limit')(
 
 const CronJob = require('cron').CronJob;
 const job = CronJob.from({
-  cronTime: '*/10 * * * *',
+  cronTime: '*/30 * * * *',
   onTick: async () => {
     await fetch(process.env.BACK_API + '/api/wake');
   },
